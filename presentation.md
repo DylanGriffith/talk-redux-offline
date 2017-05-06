@@ -184,7 +184,7 @@ end
 # Idempotent
 
 ```javascript
-export function createWidget(widget, uuid) {
+export function createOrUpdateWidget(widget, uuid) {
   return {
     ...
     meta: {
@@ -207,7 +207,7 @@ export function updateWidgetTitle(title, uuid) {
     ...
     meta: {
       offline: {
-        effect: { url: `/widgets/${uuid}`, method: 'PATCH', body: { title } },
+        effect: { url: `/widgets/${uuid}`, method: 'PATCH', body: { widget: { title } } },
         ...
       },
     }
