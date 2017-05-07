@@ -84,8 +84,11 @@ export function createWidget(widget) {
 export function createWidget(widget) {
   return (dispatch) => {
     fetch('/widgets', method: 'POST', body: JSON.stringify(widget))
-      .then(() => { dispatch({ type: 'CREATE', data: { widget } }) })
-      .catch(() => { dispatch({type: 'CREATE_FAIL'}) })
+      .then(() => {
+        dispatch({ type: 'CREATE', data: { widget } })
+      }).catch(() => {
+        dispatch({type: 'CREATE_FAIL'})
+      })
   }
 }
 ```
@@ -100,11 +103,14 @@ export function createWidget(widget) {
 export function createWidget(widget) {
   return (dispatch) => {
 
-    dispatch({ type: 'CREATE', data: { widget } }) // <====
+    dispatch({ type: 'CREATE', data: { widget } })
 
     fetch('/widgets', method: 'POST', body: JSON.stringify(widget))
-      .then(() => { dispatch({ type: 'CREATE_SUCCESS' }) })
-      .catch(() => { dispatch({type: 'CREATE_FAIL' }) })
+      .then(() => {
+        dispatch({ type: 'CREATE_SUCCESS', data: { widget } })
+      }).catch(() => {
+        dispatch({type: 'CREATE_FAIL'})
+      })
   }
 }
 ```
