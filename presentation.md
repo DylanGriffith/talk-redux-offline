@@ -169,9 +169,7 @@ POST /widgets
 ```
 
 ```
-def create
-  Widget.create(params[:widget])
-end
+Widget.create(request.widget)
 ```
 
 ---
@@ -179,10 +177,12 @@ end
 # Idempotent
 
 ```
-def update
-  widget.find_or_create_by(uuid: params[:uuid])
-  widget.update(params[:widget])
-end
+Widget.findOrCreate({where: {uuid: uuid}}, {defaults: request.widget})
+.spread((widget, created) => {
+  if(!created) {
+    widget.update(request.widget);
+  }
+});
 ```
 
 ---
