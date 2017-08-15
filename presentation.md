@@ -1,4 +1,9 @@
-# Redux Offline
+# Offline First Applications With Redux
+
+^
+Offline First Applications are applications that are built to function just as well offline as they do online.
+Who's heard of redux?
+Who's used redux?
 
 ---
 
@@ -119,10 +124,13 @@ export function createWidget(widget) {
 
 # Problems
 
-- Thunk API is kinda hard to get your head around. (ie. function returning function that gets passed functions. Why?)
+- Thunk API is kinda hard to get your head around initially.
+- Turned our easily testable pure function into some harder to test impure function
 - Not resilient to network errors (ie. no retries)
 - Need to be online. If you want an app that works offline you'll need to figure out how to do that
-- Turned our easily testable pure function into some hard to test impure function
+
+^
+Apples and Oranges Comparison since Thunk is not designed to solve the last 2 points.
 
 ---
 
@@ -158,7 +166,12 @@ export function createWidget(widget) {
 
 # Idempotence
 
-What is it?
+It's important for Redux Offline to behave correctly.
+
+^
+Creates aren't idemptotent.
+Sending an email isn't idempotent
+Updates are idemptotent
 
 ---
 
@@ -227,16 +240,28 @@ export function updateWidgetTitle(title, uuid) {
 
 - Redux Offline is very new (and maybe not really well maintained)
 - Quite a few open issues that have received few responses
-- Redux Offline is mainly built for side effects (creates/updates) but that pattern would actually generalise nicely to fetching data too
 - Redux Offline codebase is incredibly simple and could be forked if something doesn't work for you.
+
+^
+In fact I'd probably recommend just forking it since you'll end up overriding half of it with configuration.
+You could probably rip out half the code to make it less general and thus easier to debug.
+DIY for simple (yet important) things like this is probably a good idea anyway.
 
 ---
 
 # Functional Programming
 
 - Redux Offline demonstrates how to write purely functional code but still "do something"
-- Testing is a breeze
-- This API actually looks a lot like Elm
+- This API reminds me of working with a purely functional language like Elm
+- Unit testing is simple
+
+---
+
+# Other Database Options
+
+- Google Firebase
+- pouchdb
+- others...
 
 ---
 
