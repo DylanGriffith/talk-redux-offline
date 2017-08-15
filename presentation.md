@@ -267,6 +267,4 @@ DIY for simple (yet important) things like this is probably a good idea anyway.
 
 # Links
 
-https://github.com/jevakallio/redux-offline
-
-https://github.com/erikras/ducks-modular-redux
+https://github.com/jevakallio/redux-offline/pull/70
